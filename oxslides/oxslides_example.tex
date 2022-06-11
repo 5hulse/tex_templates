@@ -4,16 +4,9 @@
 % simon.hulse@chem.ox.ac.uk
 % 10-6-22
 
-\documentclass{oxslides}
+\documentclass[mfbranding]{oxslides}
 
-% FID bullet
-% \setlist{leftmargin=2mm}
-\usepackage{enumitem}
-\setlist[itemize]{
-  label={\smash{\raisebox{-0.15\height}{\includegraphics[scale=0.25]{theme_figures/fid_bullet.pdf}}}}
-}
-
-\title[\texttt{oxslides Example}]{\large{Example Usage of \texttt{oxslides} template}}
+\title[\texttt{oxslides Example}]{Example Usage of \texttt{oxslides} template}
 \author{Simon Hulse}
 \email{simon.hulse@chem.ox.ac.uk}
 \date[10/6/22]{10 June 2022}
@@ -28,15 +21,20 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{\lipsum[1][1]}
+    \frametitle{Lorem ipsum}
     \framesubtitle{\lipsum[1][2]}
   \lipsum[1][3]\\
   \textbf{\lipsum[1][4]}\\
   \textit{\lipsum[1][5]}\\
+  \texttt{\lipsum[1][6]}\\
   \[ \hat{\hat{R}} (\alpha, \beta, \gamma) \hat{T}_m^{(l)} = \sum_{m^{\prime} = -2}^2 \mathcal{D}_{m^{\prime}, m}^{(l)} (\alpha, \beta, \gamma) \hat{T}_{m^{\prime}}^{(l)} \]
   \begin{itemize}
-      \item \lipsum[1][6]
       \item \lipsum[1][7]
+      \item \lipsum[1][8]
+      \begin{itemize}
+          \item \lipsum[1][9]
+          \item \lipsum[1][10]
+      \end{itemize}
   \end{itemize}
 \end{frame}
 

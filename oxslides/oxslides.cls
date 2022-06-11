@@ -3,8 +3,13 @@
 
 \LoadClass{beamer}
 \setbeamertemplate{navigation symbols}{}
-
 \setbeamersize{text margin left=15pt}
+
+\newif\ifmfbranding
+\mfbrandingfalse
+\DeclareOption{mfbranding}{\mfbrandingtrue}
+\ProcessOptions\relax
+
 % --- FONT CONFIG --------------------------------------------------------
 \RequirePackage{fontspec}
 \RequirePackage[math-style=ISO,bold-style=ISO]{unicode-math}
@@ -43,10 +48,28 @@
 \RequirePackage{xcolor}
 \definecolor{oxfordblue}{HTML}{002e60}
 
-\pgfdeclareimage[width=\paperwidth]{header}{./theme_figures/slideheader.pdf}
+\ifmfbranding
+    \pgfdeclareimage[width=\paperwidth]{header}{./theme_figures/mf_slideheader.pdf}
+    \newcommand{\headingshift}{43}
+\else
+    \pgfdeclareimage[width=\paperwidth]{header}{./theme_figures/slideheader.pdf}
+    \newcommand{\headingshift}{0}
+\fi
+
 
 \def\email#1{\gdef\@email{#1}}
 
+% --- Itemize configuration ----------------------------------------------
+\usepackage{enumitem}
+% FID bullet
+\setlist[itemize,1]{
+    leftmargin=20pt,%
+    label={\smash{\raisebox{-0.1\height}{\includegraphics{theme_figures/fid_12pt_bullet.pdf}}}},%
+}
+\setlist[itemize,2]{
+    leftmargin=10pt,%
+    label={\smash{\raisebox{-0.1\height}{\includegraphics{theme_figures/spec_12pt_bullet.pdf}}}},%
+}
 
 % --- Title slide format -------------------------------------------------
 \setbeamertemplate{title page}
@@ -57,10 +80,10 @@
                 \centering
                 {
                     \color{oxfordblue}
-                    {\Huge\textbf{\inserttitle}\\[0.5cm]}
+                    {\Large\textbf{\inserttitle}\\[0.7cm]}
                     {\textit{\insertauthor}\\}
-                    {\footnotesize\texttt{\@email}\\[0.2cm]}
-                    {\insertdate\\[0.2cm]}
+                    {\footnotesize\texttt{\@email}\\[0.3cm]}
+                    {\insertdate\\[0.3cm]}
                 }
             \end{minipage}
       }
@@ -91,7 +114,7 @@
 \setbeamertemplate{frametitle}
 {
   \begin{picture}(0,0)
-      \put(-5,0){\bfseries\normalsize\color{white}\insertframetitle}
-    \put(-5,-10){\tiny\bfseries\color{white}\insertframesubtitle}
+      \put(\numexpr\headingshift-5,0){\bfseries\normalsize\color{white}\insertframetitle}
+      \put(\numexpr\headingshift-5,-10){\tiny\bfseries\color{white}\insertframesubtitle}
   \end{picture}
 }
