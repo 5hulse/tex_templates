@@ -49,10 +49,10 @@
 \definecolor{oxfordblue}{HTML}{002e60}
 
 \ifmfbranding
-    \pgfdeclareimage[width=\paperwidth]{header}{./theme_figures/mf_slideheader.pdf}
+    \pgfdeclareimage[width=\paperwidth]{header}{theme_figures/mf_slideheader.pdf}
     \newcommand{\headingshift}{43}
 \else
-    \pgfdeclareimage[width=\paperwidth]{header}{./theme_figures/slideheader.pdf}
+    \pgfdeclareimage[width=\paperwidth]{header}{theme_figures/slideheader.pdf}
     \newcommand{\headingshift}{0}
 \fi
 
