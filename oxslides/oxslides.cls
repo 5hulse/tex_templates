@@ -15,7 +15,7 @@
 \RequirePackage[math-style=ISO,bold-style=ISO]{unicode-math}
 
 \setsansfont{FiraSans}[
-    Path           = ../fonts/FiraSans/,%
+    Path           = <FIRASANS>,%
     Extension      = .ttf,%
     UprightFont    = *-Regular,%
     BoldFont       = *-SemiBold,%
@@ -24,13 +24,13 @@
 ]
 
 \setmathfont{FiraMath-Regular}[
-    Path           = ../fonts/,%
+    Path           = <FONTPARENT>,%
     Extension      = .otf,%
     Scale          = MatchLowercase,%
 ]
 
 \setmonofont{FiraMono}[
-    Path           = ../fonts/FiraMono/,%
+    Path           = <FIRAMONO>,%
     Extension      = .ttf,%
     Scale          = MatchLowercase,%
     UprightFont    = *-Regular,%
@@ -49,10 +49,10 @@
 \definecolor{oxfordblue}{HTML}{002e60}
 
 \ifmfbranding
-    \pgfdeclareimage[width=\paperwidth]{header}{theme_figures/mf_slideheader.pdf}
+    \pgfdeclareimage[width=\paperwidth]{header}{<MF_SLIDEHEADER>}
     \newcommand{\headingshift}{43}
 \else
-    \pgfdeclareimage[width=\paperwidth]{header}{theme_figures/slideheader.pdf}
+    \pgfdeclareimage[width=\paperwidth]{header}{<SLIDEHEADER>}
     \newcommand{\headingshift}{0}
 \fi
 
@@ -64,11 +64,11 @@
 % FID bullet
 \setlist[itemize,1]{
     leftmargin=20pt,%
-    label={\smash{\raisebox{-0.1\height}{\includegraphics{theme_figures/fid_12pt_bullet.pdf}}}},%
+    label={\smash{\raisebox{-0.1\height}{\includegraphics{<FID_BULLET>}}}},%
 }
 \setlist[itemize,2]{
     leftmargin=10pt,%
-    label={\smash{\raisebox{-0.1\height}{\includegraphics{theme_figures/spec_12pt_bullet.pdf}}}},%
+    label={\smash{\raisebox{-0.1\height}{\includegraphics{<SPEC_BULLET>}}}},%
 }
 
 % --- Title slide format -------------------------------------------------
