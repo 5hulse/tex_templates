@@ -1,4 +1,17 @@
-\RequirePackage{silence}
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{oxposter}[12-6-22 Oxford-branded poster class by Simon Hulse]
+
+\newif\ifmfbranding
+\mfbrandingfalse
+\newif\ifcentertitle
+\centertitlefalse
+\DeclareOption{mfbranding}{\mfbrandingtrue}
+\DeclareOption{centertitle}{\centertitletrue}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{beamer}}
+\ProcessOptions\relax
+
+\LoadClass[25pt,a0paper,innermargin=10mm,blockverticalspace=10mm,colspace=10mm]{tikzposter}
+\tikzposterlatexaffectionproofoff
 
 \definecolorstyle{ox} {
     \definecolor{oxblue}{HTML}{002E60}
@@ -28,24 +41,56 @@
         line width=\titlelinewidth,%
         rounded corners=\titleroundedcorners,%
     ]
-        \draw[color=blocktitlebgcolor, fill=titlebgcolor]
+        \draw[color=blocktitlebgcolor,fill=titlebgcolor]
             (\titleposleft,\titleposbottom) rectangle (\titleposright,\titlepostop);
         \node[anchor=east] at (TP@title.east) {
             \includegraphics[height=\dimexpr\titlepostop-\titleposbottom]
             {<OXLOGO>}
         };
+        \ifmfbranding
+            \node[anchor=west] at (TP@title.west) {
+                \includegraphics[height=\dimexpr\titlepostop-\titleposbottom]
+                {<MFLOGO>}
+            };
+        \fi
     \end{scope}
 }
 
-\settitle{
-    \parbox{\dimexpr\textwidth-410pt}{%
+\ifmfbranding
+    \settitle{
         \centering
-        \color{titlefgcolor}
-        {\Huge \textbf{\@title} \par}
-        \vspace*{0.8em} {\huge \textit{\@author} \par}
-        \vspace*{0.8em} {\LARGE \@institute}
+        \parbox{0.65\linewidth}{%
+            \centering
+            \color{titlefgcolor}
+            {\Huge \textbf{\@title} \par}
+            \vspace*{0.8em} {\huge \textit{\@author} \par}
+            \vspace*{0.8em} {\LARGE \@institute}
+        }
     }
-}
+\else\ifcentertitle
+    \settitle{
+        \centering
+        \parbox{0.65\linewidth}{%
+            \centering
+            \color{titlefgcolor}
+            {\Huge \textbf{\@title} \par}
+            \vspace*{0.8em} {\huge \textit{\@author} \par}
+            \vspace*{0.8em} {\LARGE \@institute}
+        }
+    }
+\else
+    \settitle{
+        \parbox{\dimexpr\linewidth-450pt}{%
+            \centering
+            \color{titlefgcolor}
+            {\Huge \textbf{\@title} \par}
+            \vspace*{0.8em} {\huge \textit{\@author} \par}
+            \vspace*{0.8em} {\LARGE \@institute}
+        }
+    }
+\fi
+\fi
+
 
 \defineblockstyle{ox}{
     titlewidthscale=1,%
@@ -75,8 +120,8 @@
     \useinnerblockstyle{Table}
     \usenotestyle{Corner}
 }
+\usetheme{oxposter}
 
-%%% font configuration
 \RequirePackage{fontspec}
 \RequirePackage[math-style=ISO,bold-style=ISO]{unicode-math}
 

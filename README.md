@@ -9,9 +9,11 @@ Currently available:
 
 #  Setting Up
 
-Simply running `install.py` with Python 3.8 or higher should set everything up
-automatically. If the script fails, feel free to get in touch with me (Simon)
-or raise an issue.
+```
+simon@computer:~$ git clone https://github.com/foroozandehgroup/tex_templates.git
+simon@computer:~$ cd tex_templates
+simon@computer:~/tex_templates$ python3.8 install.py  # Python3.8 or higher needed.
+```
 
 # Usage
 
@@ -19,7 +21,12 @@ or raise an issue.
 
 ## `oxslides`
 
-Basic setup:
+### Options
+
+* `mfbranding` As well as the Oxford logo on the right of the slide header, the
+  MF group logo will be placed on the left of the slide header.
+
+### Basic setup
 
 ```
 % MF group branding
@@ -44,12 +51,29 @@ Basic setup:
 
 ## `oxposter`
 
-Basic setup:
+### Options
+
+* `mfbranding` As well as the Oxford logo on the right of the title, the MF
+  group logo will be place to the left of the title.
+* `centertitle` If `mfbranding` is not given, by default the title will be
+  slightly shifted from center. Including the `centertitle` option will center
+  the title.
+
+### Basic setup
+
+The title can be a bit tricky to setup. I recommend you use the following
+command:
+```
+\title{\parbox{0.8\linewidth}{\centering<YOUR TITLE HERE>}}
+```
 
 ```
-\documentclass[25pt,a0paper]{tikzposter} % Add any other options to `tikzposter` as desired.
-\usepackage{oxposter}
-\usetheme{oxposter}
+% MF Group branding
+\documentclass[mfbranding]{oxposter}
+% Only Oxford branding, title slightly displaced fto left of poster center.
+% \documentclass{oxposter}
+% Only Oxford branding, title is centered.
+% \documentclass[centertitle]{oxposter}
 
 \title{TITLE}
 \author{AUTHOR}

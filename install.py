@@ -1,7 +1,7 @@
 # install.py
 # Simon Hulse
 # simon.hulse@chem.ox.ac.uk
-# Last Edited: Mon 13 Jun 2022 12:02:44 BST
+# Last Edited: Mon 13 Jun 2022 14:13:55 BST
 
 from distutils.dir_util import copy_tree
 from pathlib import Path
@@ -28,7 +28,7 @@ oxslides_dir = texmfhome / "tex/latex/local/oxslides"
 oxslides_cls = oxslides_dir / "oxslides.cls"
 oxslides_themefigures_dir = oxslides_dir / "theme_figures"
 oxposter_dir = texmfhome / "tex/latex/local/oxposter"
-oxposter_sty = oxposter_dir / "oxposter.sty"
+oxposter_cls = oxposter_dir / "oxposter.cls"
 oxposter_themefigures_dir = oxposter_dir / "theme_figures"
 
 if oxslides_dir.is_dir():
@@ -40,7 +40,7 @@ copy_tree("fonts/", str(font_parent))
 
 
 for file, themefigures_dir in zip(
-    (oxslides_cls, oxposter_sty),
+    (oxslides_cls, oxposter_cls),
     (oxslides_themefigures_dir, oxposter_themefigures_dir),
 ):
     replace_dict = {
@@ -52,6 +52,7 @@ for file, themefigures_dir in zip(
         "<FONTPARENT>": (font_parent).as_posix() + "/",
         "<FIRAMONO>": (font_parent / "FiraMono/").as_posix() + "/",
         "<OXLOGO>": (themefigures_dir / "oxford_logo.pdf").as_posix(),
+        "<MFLOGO>": (themefigures_dir / "mf_logo.pdf").as_posix(),
     }
 
     with open(file, "r") as fh:
