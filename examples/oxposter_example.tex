@@ -1,0 +1,21 @@
+\documentclass[25pt,a0paper,innermargin=10mm,blockverticalspace=10mm,colspace=10mm]{tikzposter}
+\usepackage{lipsum}
+\usepackage{oxposter}
+\usetheme{oxposter}
+\tikzposterlatexaffectionproofoff
+
+\title{Example \texttt{oxposter} useage}
+\author{Simon Hulse}
+\institute{Department of Chemistry, University of Oxford}
+
+\begin{document}
+    \maketitle[titletoblockverticalspace=10mm]
+    \begin{columns}
+        \column{0.5}
+            \block{\lipsum[1][1]}{\lipsum[1-4]}
+            \block{\lipsum[5][1]}{\lipsum[5-8]}
+        \column{0.5}
+            \block{\lipsum[9][1]}{\lipsum[9-12]}
+            \block{\lipsum[13][1]}{\lipsum[13-16]}
+    \end{columns}
+\end{document}
