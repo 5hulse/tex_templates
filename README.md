@@ -9,6 +9,10 @@ Currently available:
 
 #  Setting Up
 
+The `install.py` has been tested on both Linux and Windows systems which have a
+TexLive installation. I have not checked if it works with other TeX distributions
+(MikTex etc.).
+
 ```
 simon@computer:~$ git clone https://github.com/foroozandehgroup/tex_templates.git
 simon@computer:~$ cd tex_templates
