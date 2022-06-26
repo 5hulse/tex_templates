@@ -14,6 +14,15 @@
 \RequirePackage{fontspec}
 \RequirePackage[math-style=ISO,bold-style=ISO]{unicode-math}
 
+\setmainfont{FiraSans}[
+    Path           = <FIRASANS>,%
+    Extension      = .ttf,%
+    UprightFont    = *-Regular,%
+    BoldFont       = *-SemiBold,%
+    ItalicFont     = *-Italic,%
+    BoldItalicFont = *-BoldItalic,%
+]
+
 \setsansfont{FiraSans}[
     Path           = <FIRASANS>,%
     Extension      = .ttf,%
@@ -67,7 +76,7 @@
     label={\smash{\raisebox{-0.1\height}{\includegraphics{<FID_BULLET>}}}},%
 }
 \setlist[itemize,2]{
-    leftmargin=10pt,%
+    leftmargin=15pt,%
     label={\smash{\raisebox{-0.1\height}{\includegraphics{<SPEC_BULLET>}}}},%
 }
 
